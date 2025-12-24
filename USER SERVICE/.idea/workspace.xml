@@ -4,15 +4,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfe33fe5-1ceb-4a8d-8183-7d989302f650" name="Changes" comment="" />
+    <list default="true" id="dfe33fe5-1ceb-4a8d-8183-7d989302f650" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../BOOKING SERVICE/.idea/BOOKING SERVICE.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CATEGORY SERVICE/.idea/CATEGORY SERVICE.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PAYMENT SERVICE/.idea/PAYMENT SERVICE.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SALON SERVICE/.idea/SALON SERVICE.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SERVICE OFFERING/.idea/SERVICE OFFERING.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/orchestration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/orchestration.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/BookingServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/BookingServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SALON SERVICE/salon-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SALON SERVICE/salon-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/USER SERVICE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/USER SERVICE.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/utkarshhh/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/utkarshhh/UserServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/utkarshhh/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="373IoINIMKHD9zMz1pOg4ONw01D" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -20,11 +64,26 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.UserServiceApplication.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Springboot/orchestration/USER SERVICE"
+    "last_opened_file_path": "D:/Springboot/orchestration/SERVICE OFFERING",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.utkarshhh" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

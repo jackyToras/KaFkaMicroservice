@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/BOOKING SERVICE/booking-service/booking-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CATEGORY SERVICE/category-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/EUREKA SERVICE/netflix-eureka-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PAYMENT SERVICE/payment-service/payment-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SALON SERVICE/salon-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SERVICE OFFERING/service-offering/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/USER SERVICE/user-service/src/main/java" charset="UTF-8" />
   </component>
 </project>

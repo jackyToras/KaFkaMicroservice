@@ -4,7 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd9fb4bd-f830-4329-baab-f9d4832ec6f5" name="Changes" comment="" />
+    <list default="true" id="fd9fb4bd-f830-4329-baab-f9d4832ec6f5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/orchestration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/orchestration.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BOOKING SERVICE/booking-service/booking-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BOOKING SERVICE/booking-service/booking-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BOOKING SERVICE/booking-service/booking-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BOOKING SERVICE/booking-service/booking-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CATEGORY SERVICE/category-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CATEGORY SERVICE/category-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CATEGORY SERVICE/category-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CATEGORY SERVICE/category-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PAYMENT SERVICE/payment-service/payment-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PAYMENT SERVICE/payment-service/payment-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PAYMENT SERVICE/payment-service/payment-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PAYMENT SERVICE/payment-service/payment-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SALON SERVICE/salon-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SALON SERVICE/salon-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SALON SERVICE/salon-service/src/main/java/com/utkarshhh/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SALON SERVICE/salon-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/SALON SERVICE/salon-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SERVICE OFFERING/service-offering/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SERVICE OFFERING/service-offering/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SERVICE OFFERING/service-offering/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/SERVICE OFFERING/service-offering/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER SERVICE/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/USER SERVICE/user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER SERVICE/user-service/src/main/java/com/utkarshhh/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER SERVICE/user-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/USER SERVICE/user-service/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,9 +44,12 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="373J7yH0hjf2fy18Md4AETrbF6K" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,13 +57,41 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.BookingServiceApplication.executor": "Run",
+    "Application.ServiceOfferingApplication.executor": "Run",
+    "Application.UserServiceApplication.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Springboot/orchestration/SALON SERVICE/salon-service",
+    "last_opened_file_path": "C:/Users/user/Downloads/netflix-eureka-server",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.18586387",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="ServiceOfferingApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-24" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.utkarshhh.ServiceOfferingApplication" />
+      <module name="orchestration" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.utkarshhh.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

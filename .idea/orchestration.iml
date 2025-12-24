@@ -5,10 +5,28 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/SALON SERVICE/salon-service/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/USER SERVICE/user-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PAYMENT SERVICE/payment-service/payment-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SERVICE OFFERING/service-offering/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PAYMENT SERVICE/payment-service" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EUREKA SERVICE/netflix-eureka-server" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EUREKA SERVICE/netflix-eureka-server/src/main/java" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:3.5.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:3.5.8" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.42" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.34" level="project" />
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-netflix-eureka-server:4.3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-netflix-eureka-server:4.2.0" level="project" />
   </component>
 </module>
