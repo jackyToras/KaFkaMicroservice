@@ -50,8 +50,8 @@ public class PaymentServiceImpl implements PaymentService {
 
         PaymentOrder order = new PaymentOrder();
         order.setAmount(amount);
-        order.setBookingId(String.valueOf(new ObjectId(booking.getId())));  // ✅ Convert String to ObjectId
-        order.setSalonId(String.valueOf(new ObjectId(booking.getSalonId())));  // ✅ Convert String to ObjectId
+        order.setBookingId(String.valueOf(new ObjectId(booking.getId())));
+        order.setSalonId(String.valueOf(new ObjectId(booking.getSalonId())));
         order.setUserId(booking.getCustomerId());
 
         PaymentOrder savedOrder = paymentOrderRepository.save(order);

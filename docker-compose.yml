@@ -1,0 +1,112 @@
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  eureka:
+    build: "D:/Springboot/orchestration/EUREKA SERVICE/netflix-eureka-server/netflix-eureka-server"
+    container_name: eureka
+    ports:
+      - "8761:8761"
+    env_file: .env
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0
+    container_name: keycloak
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - keycloak-data:/opt/keycloak/data  # Added dash here
+    ports:
+      - "8180:8080"
+
+  user-service:
+    build: "D:/Springboot/orchestration/USER SERVICE/user-service"
+    ports:
+      - "1000:1000"
+    env_file: .env
+    depends_on:
+      - mongo
+      - eureka
+      - keycloak
+
+  salon-service:
+    build: "D:/Springboot/orchestration/SALON SERVICE/salon-service"
+    ports:
+      - "3000:3000"
+    env_file: .env
+    depends_on:
+      - mongo
+      - eureka
+
+  category-service:
+    build: "D:/Springboot/orchestration/CATEGORY SERVICE/category-service"
+    ports:
+      - "4000:4000"
+    env_file: .env
+    depends_on:
+      - mongo
+      - eureka
+
+  service-offering:
+    build: "D:/Springboot/orchestration/SERVICE OFFERING/service-offering"
+    ports:
+      - "2000:2000"
+    env_file: .env
+    depends_on:
+      - mongo
+      - eureka
+
+  payment-service:
+    build: "D:/Springboot/orchestration/PAYMENT SERVICE/payment-service/payment-service"
+    ports:
+      - "6000:6000"
+    env_file: .env
+    depends_on:
+      - mongo
+      - rabbitmq
+      - eureka
+
+  booking-service:
+    build: "D:/Springboot/orchestration/BOOKING SERVICE/booking-service/booking-service"
+    ports:
+      - "5000:5000"
+    env_file: .env
+    depends_on:
+      - mongo
+      - rabbitmq
+      - eureka
+
+  notification-service:
+    build: "D:/Springboot/orchestration/NOTIFICATION SERVICE/notification-service/notification-service"
+    ports:
+      - "7001:7000"
+    env_file: .env
+    depends_on:
+      - mongo
+      - rabbitmq
+      - eureka
+
+  gateway-service:
+    build: "D:/Springboot/orchestration/GATEWAY SERVICE/gateway-service/gateway-service"
+    ports:
+      - "8862:8862"
+    env_file: .env
+    depends_on:
+      - eureka
+      - keycloak
+
+# Volume definition at the TOP LEVEL (same indentation as 'services')
+volumes:
+  keycloak-data:

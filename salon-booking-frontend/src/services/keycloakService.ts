@@ -1,5 +1,4 @@
 import Keycloak from 'keycloak-js'
-import axios from 'axios'
 
 const keycloakConfig = {
   url: 'http://localhost:8180',
@@ -25,9 +24,6 @@ export const initKeycloak = async (onAuthenticatedCallback: () => void) => {
       
       const userInfo = await keycloak.loadUserInfo()
       localStorage.setItem('user', JSON.stringify(userInfo))
-
-      // Sync user to MongoDB immediately after login
-      await syncUserToMongoDB(keycloak.token)
     }
 
     keycloak.onTokenExpired = () => {
@@ -52,27 +48,6 @@ export const initKeycloak = async (onAuthenticatedCallback: () => void) => {
   }
 }
 
-// Sync user to MongoDB
-const syncUserToMongoDB = async (token: string) => {
-  try {
-    console.log('🔄 Syncing user to MongoDB...')
-    console.log('Token:', token ? 'exists' : 'missing')
-    
-    const response = await axios.get('http://localhost:8862/users/api/users/current', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    console.log('✅ User synced to MongoDB:', response.data)
-    return response.data
-  } catch (error: any) {
-    console.error('❌ Failed to sync user to MongoDB')
-    console.error('Status:', error.response?.status)
-    console.error('Error data:', error.response?.data)
-    throw error
-  }
-}
-
 export const doLogin = () => {
   keycloak.login({ redirectUri: window.location.origin })
 }
@@ -82,7 +57,6 @@ export const doLogout = () => {
   keycloak.logout({ redirectUri: window.location.origin })
 }
 
-// FIXED: Removed duplicate getToken declaration
 export const getToken = () => keycloak?.token || null
 
 export const isLoggedIn = () => !!keycloak.token
@@ -102,4 +76,9 @@ export const getUserRoles = () => keycloak.tokenParsed?.realm_access?.roles || [
 
 export const hasRole = (role: string) => getUserRoles().includes(role)
 
-export default keycloak 
+// Open Keycloak Account Management - uses Keycloak's built-in method
+export const openAccountManagement = () => {
+  keycloak.accountManagement()
+}
+
+export default keycloak

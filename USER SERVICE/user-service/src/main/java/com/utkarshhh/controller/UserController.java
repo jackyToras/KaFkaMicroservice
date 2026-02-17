@@ -24,11 +24,11 @@ public class UserController {
     @GetMapping(value = "/current")
     public ResponseEntity<UserDTO> getCurrentUser() {
         try {
-            System.out.println("✅ /current endpoint called");
+            System.out.println("/current endpoint called");
             User user = userSyncService.syncUserFromKeycloak();
             return ResponseEntity.ok(convertToDTO(user));
         } catch (Exception e) {
-            System.err.println("❌ Error in /current endpoint: " + e.getMessage());
+            System.err.println("Error in /current endpoint: " + e.getMessage());
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
@@ -37,7 +37,7 @@ public class UserController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable String id) {
         try {
-            System.out.println("✅ /{id} endpoint called with id: " + id);
+            System.out.println("/{id} endpoint called with id: " + id);
             User user = userRepository.findById(id)
                     .orElseThrow(() -> new RuntimeException("User not found"));
 

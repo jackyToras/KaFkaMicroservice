@@ -126,7 +126,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<Booking> getBookingsByCustomer(String customerId) {  // ✅ Changed to String
+    public List<Booking> getBookingsByCustomer(String customerId) {
         return bookingRepository.findByCustomerId(customerId);
     }
 
@@ -136,7 +136,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public Booking getBookingById(String id) throws Exception {  // ✅ Changed to String
+    public Booking getBookingById(String id) throws Exception {
         Booking booking = bookingRepository.findById(id).orElse(null);
         if (booking == null) {
             throw new Exception("Booking not found");

@@ -18,11 +18,11 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))  // ✅ Enable CORS
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers("/users/**").permitAll()
-                        .pathMatchers("/salons/**").permitAll()  // ✅ Add this
+                        .pathMatchers("/salons/**").permitAll()
                         .pathMatchers("/api/auth/login").permitAll()
                         .anyExchange().authenticated()
                 )

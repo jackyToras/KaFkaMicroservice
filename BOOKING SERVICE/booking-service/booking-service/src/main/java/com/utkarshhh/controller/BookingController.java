@@ -81,10 +81,10 @@ public class BookingController {
     @PutMapping("/{bookingId}/cancel")
     public ResponseEntity<?> cancelBooking(@PathVariable String bookingId) {
         try {
-            // Get current booking
+
             Booking booking = bookingService.getBookingById(bookingId);
 
-            // Validate booking can be cancelled
+
             if (booking.getStatus() == BookingStatus.CANCELLED) {
                 return ResponseEntity.badRequest().body("Booking is already cancelled");
             }
@@ -93,7 +93,7 @@ public class BookingController {
                 return ResponseEntity.badRequest().body("Cannot cancel a completed booking");
             }
 
-            // Update to CANCELLED status
+
             Booking updated = bookingService.updateBooking(bookingId, BookingStatus.CANCELLED);
 
             return ResponseEntity.ok(updated);

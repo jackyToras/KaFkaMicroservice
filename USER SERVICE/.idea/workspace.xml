@@ -5,70 +5,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dfe33fe5-1ceb-4a8d-8183-7d989302f650" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/BookingServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/BookingServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/client/ServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/client/ServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/controller/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/domain/BookingStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/domain/BookingStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/dto/BookingDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/dto/BookingDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/dto/BookingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/dto/BookingRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/dto/CategoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/dto/CategoryDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/dto/SalonDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/dto/SalonDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/dto/ServiceDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/dto/ServiceDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/mapper/BookingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/mapper/BookingMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/model/Salon.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/model/Salon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/model/SalonReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/model/SalonReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/model/ServiceOffering.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/model/ServiceOffering.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/repository/BookingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/repository/SalonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/repository/SalonRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/repository/ServiceOfferingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/repository/ServiceOfferingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/BookingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/Impl/BookingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/Impl/BookingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/Impl/SalonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/Impl/SalonServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/Impl/ServiceOfferingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/Impl/ServiceOfferingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/SalonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/SalonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/ServiceOfferingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/java/com/utkarshhh/service/ServiceOfferingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BOOKING SERVICE/booking-service/booking-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/controller/SalonCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/controller/SalonCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/model/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/repository/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/service/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/java/com/utkarshhh/service/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../CATEGORY SERVICE/category-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GATEWAY SERVICE/gateway-service/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GATEWAY SERVICE/gateway-service/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EUREKA SERVICE/netflix-eureka-server/netflix-eureka-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EUREKA SERVICE/netflix-eureka-server/netflix-eureka-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EUREKA SERVICE/netflix-eureka-server/netflix-eureka-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../EUREKA SERVICE/netflix-eureka-server/netflix-eureka-server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GATEWAY SERVICE/gateway-service/gateway-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GATEWAY SERVICE/gateway-service/gateway-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GATEWAY SERVICE/gateway-service/gateway-service/src/main/java/com/utkarshhh/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GATEWAY SERVICE/gateway-service/gateway-service/src/main/java/com/utkarshhh/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GATEWAY SERVICE/gateway-service/gateway-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../GATEWAY SERVICE/gateway-service/gateway-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NOTIFICATION SERVICE/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NOTIFICATION SERVICE/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NOTIFICATION SERVICE/notification-service/notification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NOTIFICATION SERVICE/notification-service/notification-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NOTIFICATION SERVICE/notification-service/notification-service/src/main/java/com/utkarshhh/consumer/NotificationConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NOTIFICATION SERVICE/notification-service/notification-service/src/main/java/com/utkarshhh/consumer/NotificationConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NOTIFICATION SERVICE/notification-service/notification-service/src/main/java/com/utkarshhh/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NOTIFICATION SERVICE/notification-service/notification-service/src/main/java/com/utkarshhh/service/EmailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../NOTIFICATION SERVICE/notification-service/notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../NOTIFICATION SERVICE/notification-service/notification-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/java/com/utkarshhh/client/BookingClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/java/com/utkarshhh/client/BookingClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/java/com/utkarshhh/dto/BookingDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/java/com/utkarshhh/dto/BookingDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/java/com/utkarshhh/model/PaymentOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/java/com/utkarshhh/model/PaymentOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/java/com/utkarshhh/dto/PaymentNotificationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/java/com/utkarshhh/dto/PaymentNotificationDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/java/com/utkarshhh/service/Impl/PaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/java/com/utkarshhh/service/Impl/PaymentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../PAYMENT SERVICE/payment-service/payment-service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SALON SERVICE/salon-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SALON SERVICE/salon-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/controller/SalonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/controller/SalonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/mapper/SalonMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/mapper/SalonMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/payload/dto/SalonDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/payload/dto/SalonDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/repository/SalonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/repository/SalonRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/service/SalonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/service/SalonService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/service/impl/SalonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/java/com/utkarshhh/service/impl/SalonServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SALON SERVICE/salon-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/controller/SalonServiceOfferingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/controller/SalonServiceOfferingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/controller/ServiceOfferingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/controller/ServiceOfferingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/dto/CategoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/dto/CategoryDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/dto/SalonDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/dto/SalonDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/dto/ServiceDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/dto/ServiceDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/model/ServiceOffering.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/model/ServiceOffering.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/repository/ServiceOfferingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/repository/ServiceOfferingRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/service/Impl/ServiceOfferingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/service/Impl/ServiceOfferingServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/service/ServiceOfferingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/java/com/utkarshhh/service/ServiceOfferingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVICE OFFERING/service-offering/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/USER SERVICE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/USER SERVICE.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/USER SERVICE/com/utkarshhh/UserServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/USER SERVICE/com/utkarshhh/config/MongoConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/USER SERVICE/com/utkarshhh/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/USER SERVICE/com/utkarshhh/dto/UserDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/USER SERVICE/com/utkarshhh/modal/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/USER SERVICE/com/utkarshhh/repository/UserRepository.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/utkarshhh/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/utkarshhh/UserServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/utkarshhh/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/utkarshhh/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/utkarshhh/modal/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/utkarshhh/modal/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/utkarshhh/service/UserSyncService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/utkarshhh/service/UserSyncService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/.env.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/components/common/ProtectedRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/components/common/ProtectedRoute.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/components/layout/AuthLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/components/layout/AuthLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/components/layout/MainLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/components/layout/MainLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/components/layout/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/components/layout/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/BookingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/BookingPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/HomePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/HomePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/MyBookingsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/MyBookingsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/PaymentSuccessPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/PaymentSuccessPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/SalonDetailsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/SalonDetailsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/SalonsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/SalonsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/customer/Bookings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/customer/Bookings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/customer/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/pages/customer/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../salon-booking-frontend/src/services/keycloakService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../salon-booking-frontend/src/services/keycloakService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +82,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -102,19 +103,30 @@
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Springboot/orchestration/SERVICE OFFERING&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.utkarshhh" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

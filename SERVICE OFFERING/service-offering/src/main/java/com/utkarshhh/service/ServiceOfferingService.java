@@ -17,7 +17,7 @@ public interface ServiceOfferingService {
     );
 
     ServiceOffering updateService(
-            String serviceId,  // ✅ Changed to String
+            String serviceId,
             ServiceOffering serviceOffering
     ) throws Exception;
 

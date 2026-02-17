@@ -1,5 +1,5 @@
+import { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import { isLoggedIn, getUserRoles } from '../../services/keycloakService'
 
 interface ProtectedRouteProps {
   children: React.ReactNode
@@ -7,27 +7,54 @@ interface ProtectedRouteProps {
 }
 
 export default function ProtectedRoute({ children, requiredRole }: ProtectedRouteProps) {
-  const loggedIn = isLoggedIn()
-  const roles = getUserRoles()
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [roles, setRoles] = useState<string[]>([])
+  const [loading, setLoading] = useState(true)
 
-  console.log('============================')
-  console.log('🔒 ProtectedRoute DEBUG')
-  console.log('Required role:', requiredRole)
-  console.log('Is logged in:', loggedIn)
-  console.log('User roles:', roles)
-  console.log('Has required role:', requiredRole ? roles.includes(requiredRole) : 'N/A')
-  console.log('============================')
+  useEffect(() => {
+    console.log('ProtectedRoute - checking auth...')
+    const token = localStorage.getItem('token')
+    
+    if (token) {
+      try {
+        const tokenData = JSON.parse(atob(token.split('.')[1]))
+        const tokenRoles = tokenData.realm_access?.roles || []
+        
+        console.log('Token found, roles:', tokenRoles)
+        setLoggedIn(true)
+        setRoles(tokenRoles)
+      } catch (error) {
+        console.error('Failed to parse token:', error)
+        setLoggedIn(false)
+        setRoles([])
+      }
+    } else {
+      console.log('No token found')
+      setLoggedIn(false)
+      setRoles([])
+    }
+    
+    setLoading(false)
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-slate-900"></div>
+      </div>
+    )
+  }
 
   if (!loggedIn) {
-    console.log('❌ REDIRECTING TO LOGIN - Not logged in')
+    console.log('Not logged in, redirecting to /login')
     return <Navigate to="/login" replace />
   }
 
   if (requiredRole && !roles.includes(requiredRole)) {
-    console.log('❌ REDIRECTING TO HOME - Wrong role')
+    console.log('Missing required role:', requiredRole, ', redirecting to home')
     return <Navigate to="/" replace />
   }
 
-  console.log('✅ ACCESS GRANTED - Rendering children')
+  console.log('ProtectedRoute - access granted')
   return <>{children}</>
 }

@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { apiClient } from '../../services/apiClient'
 import { Booking } from '../../types'
-import { Calendar, Clock, ArrowUpRight, TrendingUp, CheckCircle2, XCircle, Sparkles, Eye } from 'lucide-react'
+import { 
+  Calendar, Clock, ArrowRight, TrendingUp, CheckCircle, XCircle, 
+  Eye, BarChart3, Activity, CreditCard, ChevronRight, Plus,
+  Filter, Download, Search, AlertCircle, User, MapPin
+} from 'lucide-react'
 import LoadingSpinner from '../../components/common/LoadingSpinner'
 
 export default function CustomerDashboard() {
@@ -85,217 +89,395 @@ export default function CustomerDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <LoadingSpinner />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      
       {/* Header */}
-      <div className="bg-white/80 backdrop-blur-sm border-b border-neutral-200/50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-lg shadow-indigo-500/30">
-              <Sparkles className="w-6 h-6 text-white" />
-            </div>
+      <div className="bg-black text-white border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Dashboard
-              </h1>
-              <p className="text-sm text-neutral-600 mt-0.5">Overview of your bookings and activity</p>
+              <h1 className="text-4xl font-bold mb-2">Dashboard</h1>
+              <p className="text-gray-400">Welcome back! Here's your booking overview</p>
             </div>
+            <Link
+              to="/salons"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-xl hover:bg-gray-100 transition-all"
+            >
+              <Plus className="w-5 h-5" />
+              New Booking
+            </Link>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* Metrics Grid */}
+        
+        {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          
           {/* Total Bookings */}
-          <div className="group relative bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="relative">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-medium text-neutral-600">Total Bookings</span>
-                <div className="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Calendar className="w-5 h-5 text-white" />
-                </div>
-              </div>
-              <div className="text-4xl font-bold text-neutral-900 tracking-tight mb-1">
-                {stats.totalBookings}
-              </div>
-              <div className="h-1 w-0 group-hover:w-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full transition-all duration-500" />
-            </div>
-          </div>
+          <StatCard
+            icon={<Calendar className="w-6 h-6" />}
+            label="Total Bookings"
+            value={stats.totalBookings}
+            trend="+12% from last month"
+          />
 
           {/* Upcoming */}
-          <div className="group relative bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="relative">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-medium text-neutral-600">Upcoming</span>
-                <div className="p-2 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Clock className="w-5 h-5 text-white" />
-                </div>
-              </div>
-              <div className="text-4xl font-bold text-neutral-900 tracking-tight mb-1">
-                {stats.upcomingBookings}
-              </div>
-              <div className="h-1 w-0 group-hover:w-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-all duration-500" />
-            </div>
-          </div>
+          <StatCard
+            icon={<Clock className="w-6 h-6" />}
+            label="Upcoming"
+            value={stats.upcomingBookings}
+            trend="Next 30 days"
+          />
 
           {/* Completed */}
-          <div className="group relative bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="relative">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-medium text-neutral-600">Completed</span>
-                <div className="p-2 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <CheckCircle2 className="w-5 h-5 text-white" />
-                </div>
-              </div>
-              <div className="text-4xl font-bold text-neutral-900 tracking-tight mb-1">
-                {stats.completedBookings}
-              </div>
-              <div className="h-1 w-0 group-hover:w-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full transition-all duration-500" />
-            </div>
-          </div>
+          <StatCard
+            icon={<CheckCircle className="w-6 h-6" />}
+            label="Completed"
+            value={stats.completedBookings}
+            trend="All time"
+          />
 
           {/* Total Spent */}
-          <div className="group relative bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="relative">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-medium text-neutral-600">Total Spent</span>
-                <div className="p-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <TrendingUp className="w-5 h-5 text-white" />
-                </div>
-              </div>
-              <div className="text-4xl font-bold text-neutral-900 tracking-tight mb-1">
-                ₹{stats.totalSpent.toLocaleString()}
-              </div>
-              <div className="h-1 w-0 group-hover:w-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-500" />
-            </div>
-          </div>
+          <StatCard
+            icon={<CreditCard className="w-6 h-6" />}
+            label="Total Spent"
+            value={`₹${stats.totalSpent.toLocaleString()}`}
+            trend="Lifetime value"
+          />
         </div>
 
-        {/* Recent Bookings Table */}
-        <div className="bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl shadow-xl overflow-hidden">
-          <div className="px-6 py-5 border-b border-neutral-200/50 flex items-center justify-between bg-gradient-to-r from-white to-gray-50">
-            <div>
-              <h2 className="text-xl font-bold text-neutral-900">Recent Bookings</h2>
-              <p className="text-sm text-neutral-600 mt-1">Your latest appointments</p>
+        {/* Quick Actions */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <QuickAction
+            icon={<Calendar className="w-5 h-5" />}
+            title="Book Appointment"
+            description="Find and book a salon"
+            link="/salons"
+          />
+          <QuickAction
+            icon={<Activity className="w-5 h-5" />}
+            title="View Bookings"
+            description="Manage your appointments"
+            link="/customer/bookings"
+          />
+          <QuickAction
+            icon={<User className="w-5 h-5" />}
+            title="Profile Settings"
+            description="Update your details"
+            link="/customer/settings"
+          />
+        </div>
+
+        {/* Recent Bookings */}
+        <div className="bg-white border-2 border-gray-200 rounded-2xl shadow-lg overflow-hidden">
+          
+          {/* Table Header */}
+          <div className="px-8 py-6 border-b-2 border-gray-200 bg-gradient-to-r from-white to-gray-50">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">Recent Bookings</h2>
+                <p className="text-sm text-gray-600 mt-1">Your latest appointments and history</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all">
+                  <Filter className="w-4 h-4 inline mr-2" />
+                  Filter
+                </button>
+                <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all">
+                  <Download className="w-4 h-4 inline mr-2" />
+                  Export
+                </button>
+              </div>
             </div>
-            <Link
-              to="/customer/bookings"
-              className="group inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-medium rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 transition-all duration-300 hover:scale-105"
-            >
-              View all
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Link>
           </div>
 
           {bookings.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-neutral-200/50 bg-gray-50/50">
-                    <th className="text-left px-6 py-4 text-xs font-semibold text-neutral-600 uppercase tracking-wider">
-                      Booking ID
-                    </th>
-                    <th className="text-left px-6 py-4 text-xs font-semibold text-neutral-600 uppercase tracking-wider">
-                      Date
-                    </th>
-                    <th className="text-left px-6 py-4 text-xs font-semibold text-neutral-600 uppercase tracking-wider">
-                      Time
-                    </th>
-                    <th className="text-left px-6 py-4 text-xs font-semibold text-neutral-600 uppercase tracking-wider">
-                      Status
-                    </th>
-                    <th className="text-right px-6 py-4 text-xs font-semibold text-neutral-600 uppercase tracking-wider">
-                      Amount
-                    </th>
-                    <th className="text-right px-6 py-4 text-xs font-semibold text-neutral-600 uppercase tracking-wider">
-                      Action
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-neutral-200/50">
-                  {bookings.slice(0, 5).map((booking) => (
-                    <tr key={booking.id} className="group hover:bg-indigo-50/50 transition-all duration-200">
-                      <td className="px-6 py-4">
-                        <span className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-900 font-mono bg-neutral-100 group-hover:bg-indigo-100 px-3 py-1 rounded-lg transition-colors">
-                          #{booking.id.slice(-8).toUpperCase()}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="text-sm font-medium text-neutral-700 group-hover:text-neutral-900 transition-colors">
-                          {formatDate(booking)}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-2 text-sm text-neutral-700 group-hover:text-neutral-900 transition-colors">
-                          <Clock className="w-4 h-4 text-neutral-400 group-hover:text-indigo-500 transition-colors" />
-                          {formatTime(booking)}
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 ${
-                          booking.status === 'COMPLETED'
-                            ? 'bg-emerald-100 text-emerald-700 border border-emerald-200 group-hover:shadow-md group-hover:shadow-emerald-200'
-                            : booking.status === 'CONFIRM'
-                            ? 'bg-blue-100 text-blue-700 border border-blue-200 group-hover:shadow-md group-hover:shadow-blue-200'
-                            : booking.status === 'CANCELLED'
-                            ? 'bg-red-100 text-red-700 border border-red-200 group-hover:shadow-md group-hover:shadow-red-200'
-                            : 'bg-amber-100 text-amber-700 border border-amber-200 group-hover:shadow-md group-hover:shadow-amber-200'
-                        }`}>
-                          {booking.status === 'COMPLETED' && <CheckCircle2 className="w-3.5 h-3.5" />}
-                          {booking.status === 'CANCELLED' && <XCircle className="w-3.5 h-3.5" />}
-                          {booking.status}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 text-right">
-                        <span className="text-sm font-bold text-neutral-900 group-hover:text-indigo-600 transition-colors">
-                          ₹{booking.totalPrice.toLocaleString()}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 text-right">
-                        <button className="inline-flex items-center gap-1 text-xs font-medium text-indigo-600 hover:text-indigo-700 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:gap-2">
-                          <Eye className="w-4 h-4" />
-                          View
-                        </button>
-                      </td>
+            <>
+              {/* Desktop Table */}
+              <div className="hidden md:block overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-gray-200 bg-gray-50">
+                      <th className="text-left px-8 py-4 text-xs font-bold text-gray-900 uppercase tracking-wider">
+                        Booking ID
+                      </th>
+                      <th className="text-left px-8 py-4 text-xs font-bold text-gray-900 uppercase tracking-wider">
+                        Date & Time
+                      </th>
+                      <th className="text-left px-8 py-4 text-xs font-bold text-gray-900 uppercase tracking-wider">
+                        Status
+                      </th>
+                      <th className="text-left px-8 py-4 text-xs font-bold text-gray-900 uppercase tracking-wider">
+                        Payment
+                      </th>
+                      <th className="text-right px-8 py-4 text-xs font-bold text-gray-900 uppercase tracking-wider">
+                        Amount
+                      </th>
+                      <th className="text-right px-8 py-4 text-xs font-bold text-gray-900 uppercase tracking-wider">
+                        Action
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <div className="px-6 py-20 text-center">
-              <div className="relative inline-block mb-6">
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 blur-2xl rounded-full" />
-                <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center border-4 border-white shadow-xl">
-                  <Calendar className="w-10 h-10 text-indigo-500" />
-                </div>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    {bookings.slice(0, 5).map((booking) => (
+                      <tr key={booking.id} className="group hover:bg-gray-50 transition-colors">
+                        <td className="px-8 py-5">
+                          <span className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 font-mono">
+                            #{booking.id.slice(-8).toUpperCase()}
+                          </span>
+                        </td>
+                        <td className="px-8 py-5">
+                          <div className="flex flex-col">
+                            <span className="text-sm font-semibold text-gray-900">
+                              {formatDate(booking)}
+                            </span>
+                            <span className="text-xs text-gray-600 flex items-center gap-1 mt-0.5">
+                              <Clock className="w-3 h-3" />
+                              {formatTime(booking)}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="px-8 py-5">
+                          <StatusBadge status={booking.status} />
+                        </td>
+                        <td className="px-8 py-5">
+                          <PaymentBadge status={booking.paymentStatus || 'PENDING'} />
+                        </td>
+                        <td className="px-8 py-5 text-right">
+                          <span className="text-base font-bold text-gray-900">
+                            ₹{booking.totalPrice.toLocaleString()}
+                          </span>
+                        </td>
+                        <td className="px-8 py-5 text-right">
+                          <Link
+                            to={`/customer/bookings`}
+                            className="inline-flex items-center gap-1 text-sm font-semibold text-gray-900 hover:text-black transition-colors"
+                          >
+                            View
+                            <ChevronRight className="w-4 h-4" />
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-              <h3 className="text-lg font-bold text-neutral-900 mb-2">No bookings yet</h3>
-              <p className="text-sm text-neutral-600 mb-8 max-w-md mx-auto">
-                Start booking appointments with salons and enjoy premium beauty services
-              </p>
-              <Link
-                to="/salons"
-                className="group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 transition-all duration-300 hover:scale-105"
-              >
-                Browse Salons
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
-            </div>
+
+              {/* Mobile Cards */}
+              <div className="md:hidden divide-y divide-gray-200">
+                {bookings.slice(0, 5).map((booking) => (
+                  <BookingCard
+                    key={booking.id}
+                    booking={booking}
+                    formatDate={formatDate}
+                    formatTime={formatTime}
+                  />
+                ))}
+              </div>
+
+              {/* View All Footer */}
+              <div className="px-8 py-6 border-t-2 border-gray-200 bg-gray-50">
+                <Link
+                  to="/customer/bookings"
+                  className="group inline-flex items-center gap-2 text-sm font-semibold text-gray-900 hover:text-black transition-colors"
+                >
+                  View all bookings
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </>
+          ) : (
+            <EmptyState />
           )}
         </div>
       </div>
+    </div>
+  )
+}
+
+/* =====================================================
+   COMPONENTS
+===================================================== */
+
+function StatCard({ 
+  icon, 
+  label, 
+  value, 
+  trend 
+}: { 
+  icon: React.ReactNode
+  label: string
+  value: string | number
+  trend: string 
+}) {
+  return (
+    <div className="group bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-gray-300 hover:shadow-lg transition-all duration-300">
+      <div className="flex items-center justify-between mb-4">
+        <div className="p-3 bg-black rounded-xl group-hover:scale-110 transition-transform">
+          <div className="text-white">
+            {icon}
+          </div>
+        </div>
+        <TrendingUp className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
+      </div>
+      
+      <div>
+        <p className="text-sm font-semibold text-gray-600 mb-2">{label}</p>
+        <p className="text-4xl font-bold text-gray-900 mb-1">{value}</p>
+        <p className="text-xs text-gray-500">{trend}</p>
+      </div>
+    </div>
+  )
+}
+
+function QuickAction({ 
+  icon, 
+  title, 
+  description, 
+  link 
+}: { 
+  icon: React.ReactNode
+  title: string
+  description: string
+  link: string 
+}) {
+  return (
+    <Link
+      to={link}
+      className="group bg-white border-2 border-gray-200 rounded-xl p-5 hover:border-black hover:shadow-lg transition-all duration-300"
+    >
+      <div className="flex items-start gap-4">
+        <div className="p-2 bg-gray-100 rounded-lg group-hover:bg-black transition-colors">
+          <div className="text-gray-900 group-hover:text-white transition-colors">
+            {icon}
+          </div>
+        </div>
+        <div className="flex-1">
+          <h3 className="font-bold text-gray-900 mb-1 group-hover:text-black transition-colors">
+            {title}
+          </h3>
+          <p className="text-sm text-gray-600">{description}</p>
+        </div>
+        <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-black group-hover:translate-x-1 transition-all flex-shrink-0" />
+      </div>
+    </Link>
+  )
+}
+
+function StatusBadge({ status }: { status: string }) {
+  const styles = {
+    COMPLETED: 'bg-black text-white',
+    CONFIRM: 'bg-gray-100 text-gray-900 border-2 border-gray-300',
+    PENDING: 'bg-gray-100 text-gray-900 border-2 border-gray-300',
+    CANCELLED: 'bg-white text-red-600 border-2 border-red-300'
+  }
+
+  const icons = {
+    COMPLETED: <CheckCircle className="w-3.5 h-3.5" />,
+    CONFIRM: <Clock className="w-3.5 h-3.5" />,
+    PENDING: <AlertCircle className="w-3.5 h-3.5" />,
+    CANCELLED: <XCircle className="w-3.5 h-3.5" />
+  }
+
+  return (
+    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold ${styles[status as keyof typeof styles] || styles.PENDING}`}>
+      {icons[status as keyof typeof icons]}
+      {status}
+    </span>
+  )
+}
+
+function PaymentBadge({ status }: { status: string }) {
+  const styles = {
+    PAID: 'bg-black text-white',
+    PENDING: 'bg-gray-100 text-gray-900 border-2 border-gray-300',
+    FAILED: 'bg-white text-red-600 border-2 border-red-300',
+    REFUNDED: 'bg-white text-orange-600 border-2 border-orange-300'
+  }
+
+  return (
+    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold ${styles[status as keyof typeof styles] || styles.PENDING}`}>
+      <CreditCard className="w-3.5 h-3.5" />
+      {status}
+    </span>
+  )
+}
+
+function BookingCard({ 
+  booking, 
+  formatDate, 
+  formatTime 
+}: { 
+  booking: Booking
+  formatDate: (booking: Booking) => string
+  formatTime: (booking: Booking) => string 
+}) {
+  return (
+    <div className="p-6 hover:bg-gray-50 transition-colors">
+      <div className="flex items-start justify-between mb-4">
+        <div>
+          <p className="text-xs text-gray-500 mb-1">Booking ID</p>
+          <p className="font-bold text-gray-900 font-mono">
+            #{booking.id.slice(-8).toUpperCase()}
+          </p>
+        </div>
+        <StatusBadge status={booking.status} />
+      </div>
+
+      <div className="space-y-3 mb-4">
+        <div className="flex items-center gap-3">
+          <Calendar className="w-4 h-4 text-gray-400" />
+          <span className="text-sm font-medium text-gray-900">{formatDate(booking)}</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <Clock className="w-4 h-4 text-gray-400" />
+          <span className="text-sm font-medium text-gray-900">{formatTime(booking)}</span>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+        <div>
+          <p className="text-xs text-gray-500 mb-1">Amount</p>
+          <p className="text-xl font-bold text-gray-900">₹{booking.totalPrice.toLocaleString()}</p>
+        </div>
+        <Link
+          to="/customer/bookings"
+          className="inline-flex items-center gap-1 px-4 py-2 bg-black text-white text-sm font-semibold rounded-lg hover:bg-gray-900 transition-colors"
+        >
+          View
+          <ChevronRight className="w-4 h-4" />
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+function EmptyState() {
+  return (
+    <div className="px-8 py-20 text-center">
+      <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <Calendar className="w-10 h-10 text-gray-400" />
+      </div>
+      <h3 className="text-xl font-bold text-gray-900 mb-2">No bookings yet</h3>
+      <p className="text-sm text-gray-600 mb-8 max-w-md mx-auto">
+        Start booking appointments with premium salons and enjoy professional beauty services
+      </p>
+      <Link
+        to="/salons"
+        className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white font-semibold rounded-xl hover:bg-gray-900 transition-all"
+      >
+        Browse Salons
+        <ArrowRight className="w-5 h-5" />
+      </Link>
     </div>
   )
 }

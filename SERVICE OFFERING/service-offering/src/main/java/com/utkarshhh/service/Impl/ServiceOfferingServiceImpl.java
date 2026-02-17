@@ -30,7 +30,7 @@ public class ServiceOfferingServiceImpl implements ServiceOfferingService {
             ServiceDTO serviceDTO,
             CategoryDTO categoryDTO
     ) {
-        log.info("🔄 Creating service: {} for salon: {}", serviceDTO.getName(), salonDTO.getName());
+        log.info(" Creating service: {} for salon: {}", serviceDTO.getName(), salonDTO.getName());
 
         ServiceOffering service = new ServiceOffering();
         service.setName(serviceDTO.getName());
@@ -44,7 +44,7 @@ public class ServiceOfferingServiceImpl implements ServiceOfferingService {
         service.setCategoryId(categoryDTO.getId());
 
         ServiceOffering saved = mongoTemplate.save(service);
-        log.info("✅ Service created with ID: {}", saved.getId());
+        log.info(" Service created with ID: {}", saved.getId());
 
         return saved;
     }
@@ -54,7 +54,7 @@ public class ServiceOfferingServiceImpl implements ServiceOfferingService {
             String serviceId,
             ServiceOffering serviceOffering
     ) throws Exception {
-        log.info("🔄 Updating service: {}", serviceId);
+        log.info(" Updating service: {}", serviceId);
 
         ServiceOffering existing = getServiceById(serviceId);
 
@@ -65,17 +65,17 @@ public class ServiceOfferingServiceImpl implements ServiceOfferingService {
             existing.setDescription(serviceOffering.getDescription());
         }
         if (serviceOffering.getPrice() != 0) {
-            existing.setPrice(serviceOffering.getPrice());  // ✅ This works with Integer
+            existing.setPrice(serviceOffering.getPrice());
         }
         if (serviceOffering.getDuration() != 0) {
-            existing.setDuration(serviceOffering.getDuration());  // ✅ This works with Integer
+            existing.setDuration(serviceOffering.getDuration());
         }
         if (serviceOffering.getImage() != null) {
             existing.setImage(serviceOffering.getImage());
         }
 
         ServiceOffering updated = mongoTemplate.save(existing);
-        log.info("✅ Service updated: {}", updated.getId());
+        log.info(" Service updated: {}", updated.getId());
 
         return updated;
     }
@@ -85,7 +85,7 @@ public class ServiceOfferingServiceImpl implements ServiceOfferingService {
             String salonId,
             String categoryId
     ) {
-        log.info("🔍 Fetching services for salon: {}", salonId);
+        log.info(" Fetching services for salon: {}", salonId);
 
         Query query = new Query();
         query.addCriteria(Criteria.where("salonId").is(salonId));
@@ -96,37 +96,37 @@ public class ServiceOfferingServiceImpl implements ServiceOfferingService {
 
         List<ServiceOffering> services = mongoTemplate.find(query, ServiceOffering.class);
 
-        log.info("✅ Found {} services for salon {}", services.size(), salonId);
+        log.info(" Found {} services for salon {}", services.size(), salonId);
 
         return new HashSet<>(services);
     }
 
     @Override
     public List<ServiceOffering> getServicesByIds(Set<String> ids) {
-        log.info("🔍 Fetching services by IDs: {}", ids);
+        log.info(" Fetching services by IDs: {}", ids);
 
         Query query = new Query();
         query.addCriteria(Criteria.where("_id").in(ids));
 
         List<ServiceOffering> services = mongoTemplate.find(query, ServiceOffering.class);
 
-        log.info("✅ Found {} services", services.size());
+        log.info(" Found {} services", services.size());
 
         return services;
     }
 
     @Override
     public ServiceOffering getServiceById(String id) throws Exception {
-        log.info("🔍 Fetching service by ID: {}", id);
+        log.info(" Fetching service by ID: {}", id);
 
         ServiceOffering service = mongoTemplate.findById(id, ServiceOffering.class);
 
         if (service == null) {
-            log.error("❌ Service not found: {}", id);
+            log.error(" Service not found: {}", id);
             throw new Exception("Service not found with ID: " + id);
         }
 
-        log.info("✅ Found service: {}", service.getName());
+        log.info("Found service: {}", service.getName());
 
         return service;
     }

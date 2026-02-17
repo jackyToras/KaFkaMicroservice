@@ -14,12 +14,9 @@ public class UserServiceApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(UserServiceApplication.class, args);
 
-		// Print all registered controllers
-		System.out.println("========================================");
-		System.out.println("🔍 REGISTERED CONTROLLERS:");
+		System.out.println(" REGISTERED CONTROLLERS:");
 		Arrays.stream(ctx.getBeanDefinitionNames())
 				.filter(name -> name.toLowerCase().contains("controller"))
-				.forEach(name -> System.out.println("   ✅ " + name));
-		System.out.println("========================================");
+				.forEach(name -> System.out.println(name));
 	}
 }

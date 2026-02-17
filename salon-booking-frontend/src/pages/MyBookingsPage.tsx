@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { apiClient } from '../services/apiClient'
 import { Booking } from '../types'
-import { Calendar, Clock, CreditCard, CheckCircle, XCircle, AlertCircle, MapPin, Search, Filter, Download, MoreVertical, Eye, Star, Scissors, User, Phone, Mail, ChevronDown, Share2, Receipt } from 'lucide-react'
+import { Calendar, Clock, CreditCard, CheckCircle, XCircle, AlertCircle, MapPin, Search, Filter, Download, MoreVertical, Eye, Star, Scissors, User, Phone, ChevronDown, Receipt } from 'lucide-react'
 import LoadingSpinner from '../components/common/LoadingSpinner'
 
 export default function CustomerBookings() {
-  console.log('🎯 CustomerBookings component is rendering!')
+  const navigate = useNavigate()
   const [bookings, setBookings] = useState<Booking[]>([])
+  const [salons, setSalons] = useState<Record<string, any>>({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [filter, setFilter] = useState<'all' | 'upcoming' | 'past'>('all')
@@ -15,10 +17,10 @@ export default function CustomerBookings() {
   const [expandedBooking, setExpandedBooking] = useState<string | null>(null)
 
   useEffect(() => {
-    fetchBookings()
+    fetchBookingsAndSalons()
   }, [])
 
-  const fetchBookings = async () => {
+  const fetchBookingsAndSalons = async () => {
     try {
       setLoading(true)
       setError(null)
@@ -26,49 +28,58 @@ export default function CustomerBookings() {
       const userInfo = JSON.parse(localStorage.getItem('user') || '{}')
       const customerId = userInfo.sub
       
-      console.log('User info:', userInfo)
-      console.log('Customer ID:', customerId)
-      
       if (!customerId) {
-        console.error('No customer ID found in localStorage')
         setError('Please log in again to view your bookings')
         setLoading(false)
         return
       }
 
-      console.log('Fetching bookings for customer:', customerId)
-      const data = await apiClient.getCustomerBookings(customerId)
-      console.log('Bookings received:', data)
+      // Fetch bookings
+      const bookingsData = await apiClient.getCustomerBookings(customerId)
+      console.log('📦 Bookings:', bookingsData)
       
-      const sortedBookings = Array.isArray(data) 
-        ? data.sort((a: Booking, b: Booking) => 
-            new Date(b.startTime).getTime() - new Date(a.startTime).getTime()
+      const sortedBookings = Array.isArray(bookingsData) 
+        ? bookingsData.sort((a: Booking, b: Booking) => 
+            new Date(b.startTime || b.date || '').getTime() - new Date(a.startTime || a.date || '').getTime()
           )
         : []
       
       setBookings(sortedBookings)
+
+      // Get unique salon IDs
+      const salonIds = [...new Set(sortedBookings.map((b: Booking) => b.salonId).filter(Boolean))]
+      console.log('🏪 Salon IDs to fetch:', salonIds)
+
+      // Fetch all salons
+      const salonData: Record<string, any> = {}
+      for (const salonId of salonIds) {
+        try {
+          console.log('  Fetching salon:', salonId)
+          const salon = await apiClient.getSalonById(salonId as string)
+          console.log('  ✅ Got salon:', salon?.name)
+          salonData[salonId as string] = salon
+        } catch (err) {
+          console.error('  ❌ Failed to fetch salon:', salonId, err)
+        }
+      }
+      
+      console.log('💾 All salons fetched:', salonData)
+      setSalons(salonData)
+      
     } catch (error: any) {
-      console.error('Failed to fetch bookings:', error)
-      console.error('Error response:', error.response)
-      const errorMessage = error.response?.data?.message || error.message || 'Failed to load bookings'
-      setError(errorMessage)
+      console.error('❌ Error:', error)
+      setError(error.response?.data?.message || error.message || 'Failed to load bookings')
     } finally {
       setLoading(false)
     }
   }
 
   const handleCancelBooking = async (bookingId: string) => {
-    if (!confirm('Are you sure you want to cancel this booking?')) {
-      return
-    }
+    if (!confirm('Are you sure you want to cancel this booking?')) return
 
     try {
       setCancellingId(bookingId)
-      console.log('Cancelling booking:', bookingId)
-      
       await apiClient.cancelBooking(bookingId)
-      
-      console.log('Booking cancelled successfully')
       
       setBookings(bookings.map(booking => 
         booking.id === bookingId 
@@ -77,13 +88,18 @@ export default function CustomerBookings() {
       ))
       
       alert('Booking cancelled successfully!')
-      
     } catch (error: any) {
       console.error('Failed to cancel booking:', error)
       alert(error.response?.data || 'Failed to cancel booking. Please try again.')
     } finally {
       setCancellingId(null)
     }
+  }
+
+  const getSalonName = (booking: Booking) => {
+    const salon = salons[booking.salonId]
+    if (salon?.name) return salon.name
+    return 'Loading salon...'
   }
 
   const getStatusBadge = (status: string) => {
@@ -126,41 +142,31 @@ export default function CustomerBookings() {
   }
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString('en-US', {
-      weekday: 'short',
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
+    if (!dateString) return 'N/A'
+    return new Date(dateString).toLocaleDateString('en-US', {
+      weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'
     })
   }
 
   const formatTime = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleTimeString('en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true
+    if (!dateString) return 'N/A'
+    return new Date(dateString).toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', hour12: true
     })
   }
 
   const filteredBookings = bookings
     .filter(booking => {
       if (filter === 'all') return true
-      
-      const bookingDate = new Date(booking.startTime)
+      const bookingDate = new Date(booking.startTime || booking.date || '')
       const now = new Date()
-      
-      if (filter === 'upcoming') {
-        return bookingDate >= now
-      } else {
-        return bookingDate < now
-      }
+      return filter === 'upcoming' ? bookingDate >= now : bookingDate < now
     })
     .filter(booking => {
       if (!searchTerm) return true
       const search = searchTerm.toLowerCase()
-      return booking.id.toLowerCase().includes(search)
+      const salonName = getSalonName(booking).toLowerCase()
+      return booking.id.toLowerCase().includes(search) || salonName.includes(search)
     })
 
   if (loading) {
@@ -181,7 +187,7 @@ export default function CustomerBookings() {
           <h3 className="text-lg font-semibold text-gray-900 mb-2">Error Loading Bookings</h3>
           <p className="text-sm text-gray-600 mb-6">{error}</p>
           <button
-            onClick={fetchBookings}
+            onClick={fetchBookingsAndSalons}
             className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-medium rounded-lg hover:shadow-lg transition-all duration-200"
           >
             Try Again
@@ -208,18 +214,16 @@ export default function CustomerBookings() {
               </div>
               <p className="text-sm text-gray-600 ml-14">View and manage your salon appointments</p>
             </div>
-            <div className="flex items-center gap-3">
-              <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 hover:shadow-md transition-all duration-200">
-                <Download className="w-4 h-4 inline mr-2" />
-                Export
-              </button>
-            </div>
+            <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 hover:shadow-md transition-all duration-200">
+              <Download className="w-4 h-4 inline mr-2" />
+              Export
+            </button>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* Stats Overview */}
+        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div className="bg-white/80 backdrop-blur-sm border border-blue-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-all">
             <div className="flex items-center justify-between">
@@ -237,7 +241,7 @@ export default function CustomerBookings() {
               <div>
                 <p className="text-sm text-gray-600 mb-1">Upcoming</p>
                 <p className="text-2xl font-bold text-gray-900">
-                  {bookings.filter(b => new Date(b.startTime) >= new Date()).length}
+                  {bookings.filter(b => new Date(b.startTime || b.date || '') >= new Date()).length}
                 </p>
               </div>
               <div className="p-3 bg-green-100 rounded-xl">
@@ -246,19 +250,23 @@ export default function CustomerBookings() {
             </div>
           </div>
           <div className="bg-white/80 backdrop-blur-sm border border-purple-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-all">
-            <div>
-              <p className="text-sm text-gray-600 mb-1">Total Spent</p>
-              <p className="text-2xl font-bold text-gray-900">
-                ₹{bookings.filter(b => b.paymentStatus === 'PAID').reduce((sum, b) => sum + b.totalPrice, 0).toLocaleString()}
-              </p>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600 mb-1">Total Spent</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  ₹{bookings.filter(b => b.paymentStatus === 'PAID').reduce((sum, b) => sum + (b.totalPrice || 0), 0).toLocaleString()}
+                </p>
+              </div>
+              <div className="p-3 bg-purple-100 rounded-xl">
+                <CreditCard className="w-6 h-6 text-purple-600" />
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Filters and Search */}
+        {/* Filters */}
         <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-4 mb-6 shadow-sm">
           <div className="flex flex-col lg:flex-row lg:items-center gap-4">
-            {/* Filter Tabs */}
             <div className="flex gap-2">
               <button
                 onClick={() => setFilter('all')}
@@ -292,13 +300,12 @@ export default function CustomerBookings() {
               </button>
             </div>
 
-            {/* Search */}
             <div className="flex-1 flex gap-3">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Search by booking ID..."
+                  placeholder="Search by booking ID or salon name..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
@@ -337,26 +344,26 @@ export default function CustomerBookings() {
               >
                 <div className="p-6">
                   <div className="flex flex-col lg:flex-row gap-6">
-                    {/* Left: Booking Details */}
+                    {/* Left: Details */}
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-3">
+                          <div className="flex items-center gap-3 mb-2">
                             <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg shadow-md">
                               <Scissors className="w-5 h-5 text-white" />
                             </div>
-                            <div>
-                              <h3 className="text-lg font-bold text-gray-900">
-                                Booking #{booking.id.slice(-8).toUpperCase()}
+                            <div className="flex-1">
+                              <h3 className="text-xl font-bold text-gray-900">
+                                {getSalonName(booking)}
                               </h3>
-                              <p className="text-xs text-gray-500">
-                                {booking.salonId?.name || booking.salon?.name || 'Premium Salon Appointment'}
+                              <p className="text-sm text-gray-500">
+                                Booking #{booking.id.slice(-8).toUpperCase()}
                               </p>
                             </div>
                           </div>
                           <div className="flex items-center gap-2 flex-wrap mb-4">
                             {getStatusBadge(booking.status)}
-                            {getPaymentStatusBadge(booking.paymentStatus)}
+                            {getPaymentStatusBadge(booking.paymentStatus || 'PENDING')}
                           </div>
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -366,7 +373,7 @@ export default function CustomerBookings() {
                               </div>
                               <div>
                                 <p className="text-xs text-gray-500">Date</p>
-                                <p className="font-medium">{formatDate(booking.startTime)}</p>
+                                <p className="font-medium">{formatDate(booking.startTime || booking.date || '')}</p>
                               </div>
                             </div>
                             <div className="flex items-center gap-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-lg hover:bg-gray-100 transition-colors">
@@ -376,7 +383,7 @@ export default function CustomerBookings() {
                               <div>
                                 <p className="text-xs text-gray-500">Time</p>
                                 <p className="font-medium">
-                                  {formatTime(booking.startTime)} - {formatTime(booking.endTime)}
+                                  {formatTime(booking.startTime || booking.time || '')} - {formatTime(booking.endTime || '')}
                                 </p>
                               </div>
                             </div>
@@ -386,7 +393,7 @@ export default function CustomerBookings() {
                               </div>
                               <div>
                                 <p className="text-xs text-gray-500">Payment</p>
-                                <p className="font-medium capitalize">{booking.paymentMethod}</p>
+                                <p className="font-medium capitalize">{booking.paymentMethod || 'N/A'}</p>
                               </div>
                             </div>
                             <div className="flex items-center gap-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
@@ -400,20 +407,15 @@ export default function CustomerBookings() {
                             </div>
                           </div>
 
-                          {/* Expandable Details */}
                           {expandedBooking === booking.id && (
-                            <div className="mt-4 pt-4 border-t border-gray-200 space-y-3 animate-in fade-in duration-300">
+                            <div className="mt-4 pt-4 border-t border-gray-200 space-y-3">
                               <div className="flex items-center gap-3 text-sm">
                                 <User className="w-4 h-4 text-gray-400" />
-                                <span className="text-gray-600">Stylist: <span className="font-medium text-gray-900">Sarah Johnson</span></span>
-                              </div>
-                              <div className="flex items-center gap-3 text-sm">
-                                <Phone className="w-4 h-4 text-gray-400" />
-                                <span className="text-gray-600">Contact: <span className="font-medium text-gray-900">+91 98765 43210</span></span>
+                                <span className="text-gray-600">Customer: <span className="font-medium text-gray-900">{booking.customerName || 'N/A'}</span></span>
                               </div>
                               <div className="flex items-center gap-3 text-sm">
                                 <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                                <span className="text-gray-600">Rating: <span className="font-medium text-gray-900">4.8 / 5.0</span></span>
+                                <span className="text-gray-600">Total: <span className="font-medium text-gray-900">₹{booking.totalPrice}</span></span>
                               </div>
                             </div>
                           )}
@@ -437,26 +439,20 @@ export default function CustomerBookings() {
                     <div className="flex flex-row lg:flex-col items-center lg:items-end justify-between lg:justify-start gap-4 pt-4 lg:pt-0 border-t lg:border-t-0 lg:border-l border-gray-200 lg:pl-6 min-w-[200px]">
                       <div className="text-left lg:text-right">
                         <p className="text-xs font-medium text-gray-500 mb-2">Total Amount</p>
-                        <div className="flex items-baseline gap-1 lg:justify-end">
-                          <p className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                            ₹{booking.totalPrice.toLocaleString()}
-                          </p>
-                        </div>
+                        <p className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                          ₹{booking.totalPrice?.toLocaleString() || '0'}
+                        </p>
                         <p className="text-xs text-gray-500 mt-1">Inclusive of all taxes</p>
                       </div>
                       
                       <div className="flex flex-col gap-2 w-full lg:w-auto">
-                        <button className="px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2">
-                          <Eye className="w-4 h-4" />
-                          View Details
-                        </button>
                         {booking.status === 'PENDING' && (
                           <button 
                             onClick={() => handleCancelBooking(booking.id)}
                             disabled={cancellingId === booking.id}
                             className="px-4 py-2.5 text-sm font-medium border-2 border-red-300 text-red-700 bg-white rounded-lg hover:bg-red-50 hover:border-red-400 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                           >
-                            {cancellingId === booking.id ? 'Cancelling...' : 'Cancel'}
+                            {cancellingId === booking.id ? 'Cancelling...' : 'Cancel Booking'}
                           </button>
                         )}
                         {booking.status === 'COMPLETED' && (
@@ -470,7 +466,6 @@ export default function CustomerBookings() {
                   </div>
                 </div>
 
-                {/* Animated Gradient Bottom Border */}
                 <div className="h-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent group-hover:via-blue-500 group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-500" />
               </div>
             ))}

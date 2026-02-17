@@ -41,10 +41,7 @@ public class SalonServiceImpl implements SalonService {
 
         Salon salon = salonRepository.findById(String.valueOf(objectId))
                 .orElseThrow(() -> new RuntimeException("Salon not found"));
-        // ❌ Disable auth logic for now
-        // if (!Objects.equals(salon.getOwnerId(), user.getId())) {
-        //     throw new RuntimeException("Unauthorized");
-        // }
+
 
         salon.setName(salonDTO.getName());
         salon.setAddress(salonDTO.getAddress());

@@ -22,9 +22,9 @@ public class ServiceOffering {
 
     private String description;
 
-    private int price;      // ✅ primitive int (not nullable)
+    private int price;
 
-    private int duration;   // ✅ primitive int (not nullable)
+    private int duration;
 
     private String salonId;
 

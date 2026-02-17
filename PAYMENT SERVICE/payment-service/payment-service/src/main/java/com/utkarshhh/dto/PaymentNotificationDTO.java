@@ -11,7 +11,7 @@ public class PaymentNotificationDTO implements Serializable {
     private String paymentStatus;
     private String transactionId;
 
-    // Constructors
+
     public PaymentNotificationDTO() {
     }
 

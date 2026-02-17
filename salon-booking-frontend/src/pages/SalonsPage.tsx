@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import apiClient from '../services/apiClient'
 import type { Salon } from '../types'
 import LoadingSpinner from '../components/common/LoadingSpinner'
+import { addToFavorites, removeFromFavorites, isFavorite } from '../services/favoritesService'
 import { Search, Sparkles, TrendingUp, Filter, MapPin, Star, ArrowRight, Heart, Eye } from 'lucide-react'
 
 export default function SalonsPage() {
@@ -13,6 +14,7 @@ export default function SalonsPage() {
   const [error, setError] = useState<string | null>(null)
   const [isSearchFocused, setIsSearchFocused] = useState(false)
   const [hoveredSalon, setHoveredSalon] = useState<number | null>(null)
+  const [favorites, setFavorites] = useState<Set<string>>(new Set())
   const searchRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -32,6 +34,17 @@ export default function SalonsPage() {
       setFilteredSalons(salons)
     }
   }, [search, salons])
+
+  useEffect(() => {
+    // Initialize favorites state
+    const favSet = new Set<string>()
+    salons.forEach(salon => {
+      if (isFavorite(salon.id || salon._id)) {
+        favSet.add(salon.id || salon._id)
+      }
+    })
+    setFavorites(favSet)
+  }, [salons])
 
   const fetchSalons = async () => {
     try {
@@ -53,8 +66,27 @@ export default function SalonsPage() {
     }
   }
 
+  const toggleFavorite = (e: React.MouseEvent, salon: Salon) => {
+    e.preventDefault() // Prevent Link navigation
+    e.stopPropagation() // Stop event bubbling
+    
+    const salonId = salon.id || salon._id
+    
+    if (favorites.has(salonId)) {
+      removeFromFavorites(salonId)
+      setFavorites(prev => {
+        const newSet = new Set(prev)
+        newSet.delete(salonId)
+        return newSet
+      })
+    } else {
+      addToFavorites(salon)
+      setFavorites(prev => new Set(prev).add(salonId))
+    }
+  }
+
   return (
-    <div className="relative">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Animated background elements */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-20 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl animate-float"></div>
@@ -208,64 +240,72 @@ export default function SalonsPage() {
         </div>
       ) : filteredSalons && filteredSalons.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {filteredSalons.map((salon, index) => (
-            <Link
-              key={salon.id || salon._id}
-              to={`/salons/${salon.id || salon._id}`}
-              className="group relative bg-white rounded-3xl overflow-hidden border border-neutral-200 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
-              style={{
-                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
-              }}
-              onMouseEnter={() => setHoveredSalon(index)}
-              onMouseLeave={() => setHoveredSalon(null)}
-            >
-              {/* Animated border gradient */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl blur-sm -z-10"></div>
-              
-              <div className="relative aspect-[4/3] bg-neutral-100 overflow-hidden">
-                <img
-                  src={salon.image || salon.images?.[0] || 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800'}
-                  alt={salon.name}
-                  className="w-full h-full object-cover group-hover:scale-125 group-hover:rotate-2 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          {filteredSalons.map((salon, index) => {
+            const salonId = salon.id || salon._id
+            const isFav = favorites.has(salonId)
+            
+            return (
+              <Link
+                key={salonId}
+                to={`/salons/${salonId}`}
+                className="group relative bg-white rounded-3xl overflow-hidden border border-neutral-200 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                style={{
+                  animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+                }}
+                onMouseEnter={() => setHoveredSalon(index)}
+                onMouseLeave={() => setHoveredSalon(null)}
+              >
+                {/* Animated border gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl blur-sm -z-10"></div>
                 
-                {/* Hover overlay icons */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                  <div className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-pointer shadow-xl">
-                    <Heart className="w-6 h-6 text-pink-500 hover:fill-pink-500 transition-all" />
+                <div className="relative h-64 bg-neutral-100 overflow-hidden">
+                  <img
+                    src={salon.image || salon.images?.[0] || 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800'}
+                    alt={salon.name}
+                    className="w-full h-full object-cover group-hover:scale-125 group-hover:rotate-2 transition-all duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Hover overlay icons */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <button
+                      onClick={(e) => toggleFavorite(e, salon)}
+                      className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:scale-125 transition-transform duration-300 shadow-xl z-10"
+                    >
+                      <Heart className={`w-6 h-6 transition-all ${isFav ? 'text-pink-500 fill-pink-500' : 'text-pink-500 hover:fill-pink-500'}`} />
+                    </button>
+                    <div className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-pointer shadow-xl">
+                      <Eye className="w-6 h-6 text-blue-500" />
+                    </div>
                   </div>
-                  <div className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-pointer shadow-xl">
-                    <Eye className="w-6 h-6 text-blue-500" />
+                  
+                  {salon.rating > 0 && (
+                    <div className="absolute top-5 right-5 flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-xl backdrop-blur-sm group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-yellow-400 group-hover:to-orange-400 transition-all duration-300">
+                      <Star className={`w-4 h-4 text-yellow-500 fill-yellow-500 ${hoveredSalon === index ? 'animate-bounce' : ''}`} />
+                      <span className="text-sm font-black text-black group-hover:text-white transition-colors">{salon.rating}</span>
+                    </div>
+                  )}
+                  <div className="absolute bottom-5 left-5 right-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className="flex items-center gap-2 text-white text-sm font-medium bg-black/50 backdrop-blur-md px-4 py-2 rounded-full">
+                      <MapPin className="w-4 h-4 animate-bounce" />
+                      <span>{salon.city}</span>
+                    </div>
                   </div>
                 </div>
-                
-                {salon.rating > 0 && (
-                  <div className="absolute top-5 right-5 flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-xl backdrop-blur-sm group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-yellow-400 group-hover:to-orange-400 transition-all duration-300">
-                    <Star className={`w-4 h-4 text-yellow-500 fill-yellow-500 ${hoveredSalon === index ? 'animate-bounce' : ''}`} />
-                    <span className="text-sm font-black text-black group-hover:text-white transition-colors">{salon.rating}</span>
-                  </div>
-                )}
-                <div className="absolute bottom-5 left-5 right-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  <div className="flex items-center gap-2 text-white text-sm font-medium bg-black/50 backdrop-blur-md px-4 py-2 rounded-full">
-                    <MapPin className="w-4 h-4 animate-bounce" />
-                    <span>{salon.city}</span>
+                <div className="p-7 bg-white group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-neutral-50 transition-all duration-500">
+                  <h3 className="text-2xl font-black text-black mb-3 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                    {salon.name}
+                  </h3>
+                  <div className="flex items-center justify-between pt-5 border-t border-neutral-100 group-hover:border-neutral-200 transition-colors">
+                    <span className="text-sm font-bold text-black group-hover:text-purple-600 transition-colors">View Details</span>
+                    <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-300 group-hover:scale-110 group-hover:rotate-90">
+                      <ArrowRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="p-7 bg-white group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-neutral-50 transition-all duration-500">
-                <h3 className="text-2xl font-black text-black mb-3 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-                  {salon.name}
-                </h3>
-                <div className="flex items-center justify-between pt-5 border-t border-neutral-100 group-hover:border-neutral-200 transition-colors">
-                  <span className="text-sm font-bold text-black group-hover:text-purple-600 transition-colors">View Details</span>
-                  <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-300 group-hover:scale-110 group-hover:rotate-90">
-                    <ArrowRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            )
+          })}
         </div>
       ) : (
         <div className="text-center py-24 bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl border-2 border-dashed border-slate-300 hover:border-blue-400 transition-all duration-500 group">

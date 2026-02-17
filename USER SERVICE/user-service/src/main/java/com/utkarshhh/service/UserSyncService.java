@@ -27,7 +27,6 @@ public class UserSyncService {
     }
 
     private User createUserFromKeycloak(String keycloakId) {
-        log.info("Creating new user in MongoDB for Keycloak ID: {}", keycloakId);
 
         User user = new User();
         user.setKeycloakId(keycloakId);

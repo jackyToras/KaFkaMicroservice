@@ -13,12 +13,12 @@ import java.util.List;
 public class SalonDTO {
     private String id;
     private String name;
-    private List<String> images;      // ✅ This was missing!
+    private List<String> images;
     private String address;
-    private String phoneNumber;       // ✅ Was "phone", now "phoneNumber"
+    private String phoneNumber;
     private String email;
     private String city;
-    private Long ownerId;             // ✅ This was missing!
+    private Long ownerId;
     private LocalTime openTime;
     private LocalTime closeTime;
 }
