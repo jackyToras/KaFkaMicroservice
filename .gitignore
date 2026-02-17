@@ -1,27 +1,21 @@
-# Environment Variables - NEVER COMMIT THESE
 .env
 .env.local
 .env.production
 .env.*.local
 
-# IDE
 .idea/
 *.iml
 .vscode/
 
-# Build artifacts
 target/
 build/
 *.jar
 *.war
 
-# Logs
 *.log
 
-# OS
 .DS_Store
 Thumbs.db
 
-# Node modules
 node_modules/
 dist/
